@@ -1,0 +1,93 @@
+datepicker-panel {
+  display: block;
+  margin: 0 -10px;
+}
+
+.date-panel {
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border: 1px solid #CCC;
+}
+
+.date-panel th {
+  padding: 5px 0;
+  text-align: center;
+  text-transform: capitalize;
+  background: #428bca;
+  color: #FFF;
+  border: 1px solid #428bca;
+}
+
+.date-panel th a {
+  color: #FFF;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  width: 29px;
+  height: 29px;
+  line-height: 29px;
+  margin-top: -1px;
+}
+
+.date-panel th.prev-month,
+.date-panel th.next-month {
+  padding: 0;
+}
+
+.date-panel th.prev-month a {
+  margin-left: -1px;
+}
+
+.date-panel th.next-month a {
+  margin-right: -1px;
+  float: right;
+}
+
+.date-panel th.prev-month a:hover,
+.date-panel th.next-month a:hover {
+  background: #68A2D5;
+}
+
+.date-panel tbody {
+  padding: 50px 0;
+}
+
+.date-panel th.dow {
+  padding: 0 0 5px 0;
+}
+
+.date-panel td {
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.date-panel td:hover {
+  background: #F5F5F5;
+}
+
+.date-panel td.selected {
+  color: #FFF;
+}
+
+.date-panel td.selected.base {
+  background: #428bca;
+}
+
+.date-panel td.selected.compare {
+  background: #47a447;
+}
+
+.date-panel td.selected.base.compare {
+  background: #ed9c28;
+}
+
+.date-panel td.disabled {
+  color: #CCC;
+}
+
+.date-panel td.today {
+  font-weight: bold;
+}

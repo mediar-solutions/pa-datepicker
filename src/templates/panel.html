@@ -1,0 +1,33 @@
+<table class="date-panel">
+  <thead>
+    <tr>
+      <th class="prev-month">
+        <a href="#" ng-show="panel.config.first"
+          ng-click="panel.container.updatePanels(-1)">&lt;</a>
+      </th>
+      <th colspan="5" class="text-center">{{ panel.start | date:'MMMM yyyy' }}</th>
+      <th class="next-month">
+        <a href="#" ng-show="panel.config.last"
+          ng-click="panel.container.updatePanels(1)">&gt;</a>
+      </th>
+    </tr>
+    <tr>
+      <tr>
+        <th ng-repeat="date in panel.rows[0]" class="dow">
+          {{ date | date:'EEE' | limitTo:1 }}
+        </th>
+      </tr>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="dates in panel.rows">
+      <td ng-repeat="date in dates" ng-click="panel.selectDate(date)"
+        ng-mouseover="panel.previewSelection(date)"
+        ng-class="{ disabled: panel.isDisabled(date), selected: panel.isDateSelected(date),
+          base: panel.isDateWithinBasePeriod(date), compare: panel.isDateWithinComparePeriod(date),
+          today: panel.isToday(date) }">
+        {{ date | date:'dd' }}
+      </td>
+    </tr>
+  </tbody>
+</table>

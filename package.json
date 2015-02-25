@@ -1,0 +1,18 @@
+{
+  "author": "Denis Lins <denis.lins@outlook.com>",
+  "name": "pa-datepicker",
+  "version": "0.0.0",
+  "description": "A complete datepicker written from scratch built on top of AngularJS",
+  "homepage": "http://angular-ui.github.io/bootstrap/",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-angular-templatecache": "^1.5.0",
+    "gulp-concat": "^2.5.2",
+    "gulp-minify-css": "^0.4.6",
+    "gulp-rename": "^1.2.0",
+    "gulp-uglify": "^1.1.0"
+  },
+  "license": "MIT"
+}
