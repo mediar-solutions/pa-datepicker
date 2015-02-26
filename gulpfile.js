@@ -5,14 +5,16 @@ var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var minifyCSS = require('gulp-minify-css');
 var templateCache = require('gulp-angular-templatecache');
+
 var del = require('del');
+var path = require('path');
 
 var config = require('./build/config.js');
 var files = require('./build/files.js');
 
 // Clear task
 gulp.task('clear', function() {
-  del(config.dist_folder);
+  del(config.distFolder);
 });
 
 // Scripts task
@@ -20,13 +22,13 @@ gulp.task('scripts', function() {
   gulp.src(files.scripts).pipe(
     concat(config.scripts.filename)
   ).pipe(
-    gulp.dest(config.dist_folder)
+    gulp.dest(config.distFolder)
   ).pipe(
     uglify({ mangle: true })
   ).pipe(
     rename(config.scripts.filenameMin)
   ).pipe(
-    gulp.dest(config.dist_folder)
+    gulp.dest(config.distFolder)
   );
 });
 
@@ -35,24 +37,29 @@ gulp.task('styles', function() {
   gulp.src(files.styles).pipe(
     concat(config.styles.filename)
   ).pipe(
-    gulp.dest(config.dist_folder)
+    gulp.dest(config.distFolder)
   ).pipe(
     minifyCSS()
   ).pipe(
     rename(config.styles.filenameMin)
   ).pipe(
-    gulp.dest(config.dist_folder)
+    gulp.dest(config.distFolder)
   );
 });
 
 // Templates task
 gulp.task('templates', function() {
+  var templateCacheConfig = {
+    module: config.moduleName,
+    base: function(file) {
+      return config.templates.baseDir + '/' + path.basename(file.history[0]);
+    }
+  };
+
   gulp.src(files.templates).pipe(
-    concat(config.templates.filename)
+    templateCache(config.templates.filename, templateCacheConfig)
   ).pipe(
-    templateCache()
-  ).pipe(
-    gulp.dest(config.dist_folder)
+    gulp.dest(config.distFolder)
   );
 });
 

@@ -9,7 +9,7 @@
       controller: 'DatepickerContainerCtrl',
       controllerAs: 'container',
       bindToController: true,
-      templateUrl: 'templates/container.html',
+      templateUrl: 'templates/pa-datepicker/container.html',
       scope: {
         panels: '@',
         mode: '@',

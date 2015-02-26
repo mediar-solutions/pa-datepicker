@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pure Angular Datepicker Example</title>
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="../dist/paDatepicker.css" />
+  <link rel="stylesheet" type="text/css" href="css/app.css" />
+</head>
+<body ng-app="pa-datepicker-example">
+
+  <div class="container" ng-controller="ExampleCtrl as ctrl">
+    <div class="row">
+      <div class="col-md-7">
+        <pa-datepicker current-period="ctrl.currentPeriod"
+          base="ctrl.base" compare="ctrl.compare" panels="3">
+        </pa-datepicker>
+      </div>
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Start date</label>
+            <date-input ng-model="ctrl.base.start" class="form-control"
+              ng-focus="ctrl.currentPeriod = 'base'"></date-input>
+          </div>
+          <div class="col-md-6">
+            <label>End date</label>
+            <date-input ng-model="ctrl.base.end" class="form-control"
+              ng-focus="ctrl.currentPeriod = 'base'"></date-input>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6">
+            <label>Start date</label>
+            <date-input ng-model="ctrl.compare.start" class="form-control"
+              ng-focus="ctrl.currentPeriod = 'compare'"></date-input>
+          </div>
+          <div class="col-md-6">
+            <label>End date</label>
+            <date-input ng-model="ctrl.compare.end" class="form-control"
+              ng-focus="ctrl.currentPeriod = 'compare'"></date-input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="../dist/paDatepicker.js"></script>
+  <script type="text/javascript" src="../dist/paDatepicker.tpls.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
+
+</body>
+</html>

@@ -20,7 +20,7 @@ module.exports = {
   ],
 
   templates: [
-    'src/templates/**',
+    'src/templates/**/*.html',
   ],
 
 };

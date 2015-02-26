@@ -10,7 +10,7 @@
       controllerAs: 'panel',
       bindToController: true,
       require: ['^paDatepicker', '^paPanel'],
-      templateUrl: 'templates/panel.html',
+      templateUrl: 'templates/pa-datepicker/panel.html',
       scope: {
         config: '=',
         period: '@',

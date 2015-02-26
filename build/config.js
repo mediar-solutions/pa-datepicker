@@ -1,7 +1,9 @@
 /* jshint strict: false */
 module.exports = {
 
-  dist_folder: './dist',
+  distFolder: './dist',
+
+  moduleName: 'pa-datepicker',
 
   scripts: {
     filename: 'paDatepicker.js',
@@ -16,7 +18,8 @@ module.exports = {
   },
 
   templates: {
-    filename: 'templates.js',
+    filename: 'paDatepicker.tpls.js',
+    baseDir: 'templates/pa-datepicker',
     watchlist: 'src/templates/**/*.html',
   },
 
