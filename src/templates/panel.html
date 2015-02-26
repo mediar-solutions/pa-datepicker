@@ -25,7 +25,7 @@
         ng-mouseover="panel.previewSelection(date)"
         ng-class="{ disabled: panel.isDisabled(date), selected: panel.isDateSelected(date),
           base: panel.isDateWithinBasePeriod(date), compare: panel.isDateWithinComparePeriod(date),
-          today: panel.isToday(date) }">
+          today: panel.container.isToday(date) }">
         {{ date | date:'dd' }}
       </td>
     </tr>

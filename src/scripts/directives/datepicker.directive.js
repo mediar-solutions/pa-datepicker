@@ -9,19 +9,21 @@
       controller: 'DatepickerContainerCtrl',
       controllerAs: 'container',
       bindToController: true,
+      require: ['^ngModel', '^paDatepicker'],
       templateUrl: 'templates/pa-datepicker/container.html',
       scope: {
         panels: '@',
         mode: '@',
         base: '=',
         compare: '=',
-        currentPeriod: '=',
+        currentPeriod: '=?',
         startingDay: '@',
         minDate: '=',
-        maxDate: '='
+        maxDate: '=',
+        ngModel: '=',
       },
       link: function(scope, element, attrs, controller) {
-        controller.init();
+        controller[1].init();
       }
     };
 

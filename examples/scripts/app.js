@@ -8,6 +8,8 @@
 
   app.controller('ExampleCtrl', function() {
 
+    window.teste = this;
+
   });
 
 })();

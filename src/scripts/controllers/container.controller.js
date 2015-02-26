@@ -7,14 +7,15 @@
 
       angular.extend(this, {
 
-        datePanels: [],
-        selections: {},
-
         init: function() {
+          this.datePanels = [];
+          this.selections = {};
+
           this.initConfig();
-          this.initCurrentPeriod();
-          this.initPeriodDates();
+          this.initToday();
           this.initPanels();
+          this.initCurrentPeriod();
+          this.initModel();
         },
 
         initConfig: function() {
@@ -27,28 +28,32 @@
           }.bind(this));
         },
 
-        initCurrentPeriod: function() {
-          this.currentPeriod = this.currentPeriod || 'base';
-        },
-
-        initPeriodDates: function() {
-          var today = new Date();
-          today.setHours(0, 0, 0, 0);
-
-          this.base = { start: today, end: today };
-          this.compare = { start: today, end: today };
+        initToday: function() {
+          this.today = new Date();
+          this.today.setHours(0, 0, 0, 0);
         },
 
         initPanels: function() {
           var numberOfPanels = parseInt(this.config.panels, 10);
+          var base = this.today;
 
           for (var i = 0; i < numberOfPanels; i++) {
             this.datePanels[i] = {
               first: i === 0,
               last: i === numberOfPanels - 1,
-              year: this.compare.end.getFullYear(),
-              month: this.compare.end.getMonth() + i - numberOfPanels + 1,
+              year: base.getFullYear(),
+              month: base.getMonth() + i - numberOfPanels + 1,
             };
+          }
+        },
+
+        initCurrentPeriod: function() {
+          this.currentPeriod = this.currentPeriod || 'base';
+        },
+
+        initModel: function() {
+          if (this.isRange() && !this.ngModel) {
+            this.ngModel = {};
           }
         },
 
@@ -57,11 +62,23 @@
         },
 
         selectDate: function(date) {
-          if (!this.selections[this.currentPeriod]) {
+          if (this.isRange()) {
+            this.handleDateSelection(date);
+          } else {
+            this.ngModel = date;
+          }
+        },
+
+        handleDateSelection: function(date) {
+          if (!this.isSelecting()) {
             this.startSelection(date);
           } else {
             this.stopSelection(date);
           }
+        },
+
+        isSelecting: function() {
+          return !!this.selections[this.currentPeriod];
         },
 
         startSelection: function(date) {
@@ -97,7 +114,12 @@
         },
 
         updateCurrentPeriod: function(start, end) {
-          this[this.currentPeriod] = { start: start, end: end };
+          if (!this.ngModel) this.ngModel = {};
+          this.ngModel[this.currentPeriod] = { start: start, end: end };
+        },
+
+        isRange: function() {
+          return this.config.mode === 'range';
         },
 
         isDateDisabled: function(date) {
@@ -106,8 +128,12 @@
         },
 
         isDateSelected: function(date) {
-          return this.isDateWithinBasePeriod(date) ||
-            this.isDateWithinComparePeriod(date);
+          if (this.isRange()) {
+            return this.isDateWithinBasePeriod(date) ||
+              this.isDateWithinComparePeriod(date);
+          }
+
+          return this.ngModel && date.getTime() === this.ngModel.getTime();
         },
 
         isDateWithinBasePeriod: function(date) {
@@ -119,22 +145,23 @@
         },
 
         isDateWithinPeriod: function(period, date) {
-          if (this.isSelecting() && this.currentPeriod === period) {
+          if (!this.isRange()) {
+            return false;
+          } else if (this.isSelecting() && this.currentPeriod === period) {
             return this.isDateWithinSelection(date);
           }
 
-          var selection = this[period];
-          return date >= selection.start && date <= selection.end;
-        },
-
-        isSelecting: function() {
-          var selection = this.selections[this.currentPeriod];
-          return selection && selection.selected;
+          var selection = this.ngModel[period];
+          return selection && date >= selection.start && date <= selection.end;
         },
 
         isDateWithinSelection: function(date) {
           var selection = this.selections[this.currentPeriod];
-          return this.isSelecting() && date >= selection.start && date <= selection.end;
+          return date >= selection.start && date <= selection.end;
+        },
+
+        isToday: function(date) {
+          return date.getTime() === this.today.getTime();
         },
 
         getStartingDay: function() {

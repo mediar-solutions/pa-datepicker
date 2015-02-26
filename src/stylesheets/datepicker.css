@@ -4,6 +4,7 @@ datepicker-panel {
 }
 
 .date-panel {
+  position: relative;
   width: 100%;
   max-width: 200px;
   margin: 0 auto;
@@ -28,7 +29,8 @@ datepicker-panel {
   width: 29px;
   height: 29px;
   line-height: 29px;
-  margin-top: -1px;
+  position: absolute;
+  top: 0;
 }
 
 .date-panel th.prev-month,
@@ -37,12 +39,11 @@ datepicker-panel {
 }
 
 .date-panel th.prev-month a {
-  margin-left: -1px;
+  left: 0;
 }
 
 .date-panel th.next-month a {
-  margin-right: -1px;
-  float: right;
+  right: -1px;
 }
 
 .date-panel th.prev-month a:hover,
@@ -70,9 +71,6 @@ datepicker-panel {
 
 .date-panel td.selected {
   color: #FFF;
-}
-
-.date-panel td.selected.base {
   background: #428bca;
 }
 

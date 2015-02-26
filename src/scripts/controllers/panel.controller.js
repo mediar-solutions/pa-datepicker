@@ -9,18 +9,12 @@
 
         init: function() {
           this.updatePanel();
-          this.initToday();
           this.initConfigWatcher();
         },
 
         updatePanel: function() {
           this.setBoundaries();
           this.separateRows();
-        },
-
-        initToday: function() {
-          this.today = new Date();
-          this.today.setHours(0, 0, 0, 0);
         },
 
         initConfigWatcher: function() {
@@ -89,10 +83,6 @@
 
         isDateWithinComparePeriod: function(date) {
           return !this.isDisabled(date) && this.container.isDateWithinComparePeriod(date);
-        },
-
-        isToday: function(date) {
-          return date.getTime() === this.today.getTime();
         },
 
       });
