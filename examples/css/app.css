@@ -1,7 +1,39 @@
 .container {
+}
+
+.example {
   margin-top: 20px;
 }
 
-.date-panel {
-  font-size: 12px;
+.example h3 {
+  margin-bottom: 20px;
+}
+
+.example .model-value {
+  margin: 20px 0 0 0;
+}
+
+.example .model-value::before {
+  content: 'Model value:';
+  font-weight: bold;
+}
+
+.example .single-date {
+  width: 200px;
+  float: left;
+  margin: 0 15px;
+}
+
+.date-input.base {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.date-input.compare {
+  border-color: #47a447;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
 }

@@ -25,7 +25,7 @@
 
       return {
         require: 'ngModel',
-        template: '<input type="text" />',
+        template: '<input type="text" class="date-input" />',
         replace: true,
         scope: {
           format: '@',

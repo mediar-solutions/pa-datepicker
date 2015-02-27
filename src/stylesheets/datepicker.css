@@ -1,6 +1,6 @@
-datepicker-panel {
+pa-datepicker {
   display: block;
-  margin: 0 -10px;
+  font-size: 12px;
 }
 
 .date-panel {

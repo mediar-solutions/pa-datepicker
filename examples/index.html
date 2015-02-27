@@ -10,41 +10,73 @@
 
   <div class="container" ng-controller="ExampleCtrl as ctrl">
 
-    <div class="row">
-      <div class="col-md-7">
-        <pa-datepicker ng-model="ctrl.dt" mode="single" panels="3"
-          current-period="ctrl.currentPeriod"></pa-datepicker>
-      </div>
-      <div class="col-md-5">
-        <div class="row">
-          <div class="col-md-6">
-            <label>Start date</label>
-            <date-input ng-model="ctrl.dt.base.start" class="form-control"
-              ng-focus="ctrl.currentPeriod = 'base'"></date-input>
-          </div>
-          <div class="col-md-6">
-            <label>End date</label>
-            <date-input ng-model="ctrl.dt.base.end" class="form-control"
-              ng-focus="ctrl.currentPeriod = 'base'"></date-input>
-          </div>
+    <div class="example">
+      <h3>Single date</h3>
+      <div class="row">
+        <div class="single-date">
+          <pa-datepicker ng-model="ctrl.date"></pa-datepicker>
         </div>
-        <br />
-        <div class="row">
-          <div class="col-md-6">
-            <label>Start date</label>
-            <date-input ng-model="ctrl.dt.compare.start" class="form-control"
-              ng-focus="ctrl.currentPeriod = 'compare'"></date-input>
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Selected date</label>
+              <date-input ng-model="ctrl.date" class="form-control"></date-input>
+            </div>
           </div>
-          <div class="col-md-6">
-            <label>End date</label>
-            <date-input ng-model="ctrl.dt.compare.end" class="form-control"
-              ng-focus="ctrl.currentPeriod = 'compare'"></date-input>
+          <div class="model-value">
+            <pre>{{ ctrl.date }}</pre>
           </div>
         </div>
       </div>
     </div>
 
-    <p>{{ ctrl.dt }}</p>
+    <div class="example">
+      <h3>Range</h3>
+      <div class="row">
+        <div class="col-md-7">
+          <pa-datepicker ng-model="ctrl.range" mode="range" panels="3"
+            current-period="ctrl.currentPeriod"></pa-datepicker>
+        </div>
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-6">
+              <label>Start date</label>
+              <date-input class="form-control" ng-model="ctrl.range.base.start"
+                ng-focus="ctrl.currentPeriod = 'base'"
+                ng-class="{ base: ctrl.currentPeriod === 'base' }">
+              </date-input>
+            </div>
+            <div class="col-md-6">
+              <label>End date</label>
+              <date-input class="form-control" ng-model="ctrl.range.base.end"
+                ng-focus="ctrl.currentPeriod = 'base'"
+                ng-class="{ base: ctrl.currentPeriod === 'base' }" format="dd/MM/yyyy">
+              </date-input>
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-6">
+              <label>Start date</label>
+              <date-input class="form-control" ng-model="ctrl.range.compare.start"
+                ng-focus="ctrl.currentPeriod = 'compare'"
+                ng-class="{ compare: ctrl.currentPeriod === 'compare' }">
+              </date-input>
+            </div>
+            <div class="col-md-6">
+              <label>End date</label>
+              <date-input class="form-control" ng-model="ctrl.range.compare.end"
+                ng-focus="ctrl.currentPeriod = 'compare'"
+                ng-class="{ compare: ctrl.currentPeriod === 'compare' }">
+              </date-input>
+            </div>
+          </div>
+          <div class="model-value">
+            <pre>{{ ctrl.range | json }}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript" src="bower_components/angular/angular.js"></script>
