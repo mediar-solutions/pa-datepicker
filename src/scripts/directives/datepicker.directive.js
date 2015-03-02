@@ -9,7 +9,7 @@
       controller: 'DatepickerContainerCtrl',
       controllerAs: 'container',
       bindToController: true,
-      require: ['^ngModel', '^paDatepicker'],
+      require: ['^ngModel', '^paDatepicker', '?^paDatepickerPopup'],
       templateUrl: 'templates/pa-datepicker/container.html',
       scope: {
         panels: '@',
@@ -23,6 +23,7 @@
         ngModel: '=',
       },
       link: function(scope, element, attrs, controller) {
+        controller[1].popup = controller[2];
         controller[1].init();
       }
     };

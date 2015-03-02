@@ -1,4 +1,4 @@
-pa-datepicker {
+.datepicker {
   display: block;
   font-size: 12px;
 }
@@ -10,6 +10,7 @@ pa-datepicker {
   margin: 0 auto;
   border-collapse: collapse;
   border: 1px solid #CCC;
+  background: #FFF;
 }
 
 .date-panel th {
@@ -88,4 +89,14 @@ pa-datepicker {
 
 .date-panel td.today {
   font-weight: bold;
+}
+
+.datepicker-container {
+  position: absolute;
+  z-index: 9999;
+  width: 200px;
+}
+
+.datepicker-container .datepicker {
+  margin-top: 5px;
 }

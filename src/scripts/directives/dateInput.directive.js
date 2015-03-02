@@ -2,7 +2,7 @@
 
   'use strict';
 
-  angular.module('pa-datepicker').directive('dateInput',
+  angular.module('pa-datepicker').directive('paDateInput',
     ['$filter', 'DateParser', function($filter, DateParser) {
 
       var createDateFormatter = function(format) {

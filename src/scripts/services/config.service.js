@@ -8,6 +8,9 @@
     startingDay: 0,
     minDate: null,
     maxDate: null,
+    popup: {
+      closeAfterSelection: true,
+    },
   });
 
 })();

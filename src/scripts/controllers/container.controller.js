@@ -66,6 +66,7 @@
             this.handleDateSelection(date);
           } else {
             this.ngModel = date;
+            this.closePopup();
           }
         },
 
@@ -74,6 +75,7 @@
             this.startSelection(date);
           } else {
             this.stopSelection(date);
+            this.closePopup();
           }
         },
 
@@ -166,6 +168,12 @@
 
         getStartingDay: function() {
           return (parseInt(this.config.startingDay, 10) % 7) || 0;
+        },
+
+        closePopup: function() {
+          if (this.popup) {
+            this.popup.close();
+          }
         },
 
       });
