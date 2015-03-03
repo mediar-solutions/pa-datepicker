@@ -2,13 +2,15 @@
 var files = require('./build/files');
 
 var getFilesList = function() {
-  var scripts = files.scripts;
+  var scripts = [
+    'bower_components/jquery/dist/jquery.js',
+    'bower_components/angular/angular.js',
+  ];
 
-  // jQuery and Angular must come first
-  scripts.unshift('bower_components/angular/angular.js');
-  scripts.unshift('bower_components/jquery/dist/jquery.js');
+  // appends appliction files
+  scripts = scripts.concat(files.scripts);
 
-  // append some more files...
+  // appends some more files...
   scripts = scripts.concat([
     // angular mocks
     'bower_components/angular-mocks/angular-mocks.js',
@@ -26,14 +28,10 @@ var getFilesList = function() {
 var getPreprocessors = function() {
   var processors = { '**/*.html': 'ng-html2js' };
 
-  // removes initializers
-  // files.app_scripts.shift();
-  // files.app_scripts.shift();
-
   // adds coverage processor
-  // files.app_scripts.forEach(function(file) {
-  //   processors[file] = 'coverage';
-  // });
+  files.scripts.forEach(function(file) {
+    processors[file] = 'coverage';
+  });
 
   return processors;
 };
@@ -41,9 +39,9 @@ var getPreprocessors = function() {
 var getReporters = function() {
   var reporters = ['progress'];
 
-  // if (process.env.CIRCLECI) {
-  //   reporters.push('coverage');
-  // }
+  if (process.env.CIRCLECI) {
+    reporters.push('coverage');
+  }
 
   return reporters;
 };
@@ -64,10 +62,6 @@ module.exports = function(config) {
       'karma-ng-html2js-preprocessor',
       'karma-coverage',
     ],
-    junitReporter : {
-      outputFile: 'test_out/unit.xml',
-      suite: 'unit',
-    },
     ngHtml2JsPreprocessor: {
       moduleName: 'pa-datepicker',
     },
