@@ -12,6 +12,7 @@
           this.initOpeningWatcher();
           this.initConfig();
           this.initClickHandler();
+          this.openingHandler();
         },
 
         initOpeningWatcher: function() {
@@ -57,7 +58,6 @@
         },
 
         close: function() {
-          console.log(this.config.closeAfterSelection);
           if (this.config.closeAfterSelection) {
             this.isOpen = false;
             this.openingHandler();

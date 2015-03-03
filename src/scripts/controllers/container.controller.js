@@ -13,9 +13,9 @@
 
           this.initConfig();
           this.initToday();
-          this.initPanels();
           this.initCurrentPeriod();
           this.initModel();
+          this.initPanels();
         },
 
         initConfig: function() {
@@ -35,7 +35,7 @@
 
         initPanels: function() {
           var numberOfPanels = parseInt(this.config.panels, 10);
-          var base = this.today;
+          var base = this.getPanelStart();
 
           for (var i = 0; i < numberOfPanels; i++) {
             this.datePanels[i] = {
@@ -54,6 +54,26 @@
         initModel: function() {
           if (this.isRange() && !this.ngModel) {
             this.ngModel = {};
+          } else if (this.ngModel instanceof Date) {
+            this.ngModel.setHours(0, 0, 0, 0);
+          }
+        },
+
+        getPanelStart: function() {
+          if (this.isRange()) {
+            return this.getRangePanelStart();
+          } else {
+            return this.ngModel || this.today;
+          }
+        },
+
+        getRangePanelStart: function() {
+          if (this.ngModel.compare && this.ngModel.compare.end instanceof Date) {
+            return this.ngModel.compare.end;
+          } else if (this.ngModel.base && this.ngModel.base.end instanceof Date) {
+            return this.ngModel.base.end;
+          } else {
+            return this.today;
           }
         },
 
