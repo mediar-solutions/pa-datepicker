@@ -3,10 +3,9 @@ machine:
     CODECLIMATE_REPO_TOKEN: 07f2aa2c42ea95f7f099397a6aadf66d5d8249824608c159a06cef1ad05ddc77
 dependencies:
   post:
-    - npm install -g gulp karma-cli codeclimate-test-reporter bower
-    - gulp
+    - ./node_modules/gulp/bin/gulp.js
 test:
   override:
     - npm run test-single-run
   post:
-    - codeclimate < coverage.info
+    - ./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage.info
