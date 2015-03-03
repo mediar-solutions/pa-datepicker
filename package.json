@@ -23,6 +23,7 @@
     "karma-ng-html2js-preprocessor": "^0.1.2"
   },
   "scripts": {
+    "postinstall": "bower install",
     "test": "./node_modules/karma/bin/karma start karma.conf.js",
     "test-single-run": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
