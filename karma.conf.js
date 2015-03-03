@@ -4,6 +4,7 @@ var files = require('./build/files');
 var getFilesList = function() {
   var scripts = [
     'bower_components/jquery/dist/jquery.js',
+    'bower_components/jasmine-jquery/lib/jasmine-jquery.js',
     'bower_components/angular/angular.js',
   ];
 
@@ -63,7 +64,9 @@ module.exports = function(config) {
       'karma-coverage',
     ],
     ngHtml2JsPreprocessor: {
-      moduleName: 'pa-datepicker',
+      stripPrefix: 'src/templates/',
+      prependPrefix: 'templates/pa-datepicker/',
+      moduleName: 'pa-datepicker-templates',
     },
     coverageReporter: {
       reporters: [{
