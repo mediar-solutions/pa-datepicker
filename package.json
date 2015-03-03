@@ -6,6 +6,7 @@
   "homepage": "http://angular-ui.github.io/bootstrap/",
   "dependencies": {},
   "devDependencies": {
+    "codeclimate-test-reporter": "0.0.4",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-angular-templatecache": "^1.5.0",
@@ -22,8 +23,8 @@
     "karma-ng-html2js-preprocessor": "^0.1.2"
   },
   "scripts": {
-    "test": "karma start karma.conf.js",
-    "test-single-run": "karma start karma.conf.js --single-run"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js",
+    "test-single-run": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "license": "MIT"
 }
