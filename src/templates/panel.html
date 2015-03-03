@@ -5,7 +5,9 @@
         <a href="#" ng-show="panel.config.first"
           ng-click="panel.container.updatePanels(-1)">&lt;</a>
       </th>
-      <th colspan="5" class="text-center">{{ panel.start | date:'MMMM yyyy' }}</th>
+      <th colspan="5" class="active-month">
+        {{ panel.start | date:'MMMM yyyy' }}
+      </th>
       <th class="next-month">
         <a href="#" ng-show="panel.config.last"
           ng-click="panel.container.updatePanels(1)">&gt;</a>

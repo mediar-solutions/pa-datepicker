@@ -52,6 +52,10 @@
   background: #68A2D5;
 }
 
+.date-panel th.active-month {
+  text-align: center;
+}
+
 .date-panel tbody {
   padding: 50px 0;
 }
