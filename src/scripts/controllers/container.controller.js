@@ -77,7 +77,8 @@
           }
         },
 
-        updatePanels: function(month) {
+        updatePanels: function(month, $event) {
+          $event.preventDefault();
           this.datePanels.forEach(function(p) { p.month += month; });
         },
 
