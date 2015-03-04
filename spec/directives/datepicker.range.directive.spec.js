@@ -1,5 +1,5 @@
 /* jshint multistr: true */
-describe('directive: pa-date-input', function() {
+describe('directive: pa-datepicker (range)', function() {
 
   var getDayCells = function(element) {
     var cells = [];
@@ -278,8 +278,8 @@ describe('directive: pa-date-input', function() {
         this.scope.currentPeriod = 'comparison';
         this.scope.$digest();
 
-        this.panels.eq(1).find('tbody tr:nth-child(3) td:nth-child(2)').click();
         this.panels.eq(1).find('tbody tr:nth-child(3) td:nth-child(6)').click();
+        this.panels.eq(1).find('tbody tr:nth-child(3) td:nth-child(2)').click();
 
         var expected = {
           base: {

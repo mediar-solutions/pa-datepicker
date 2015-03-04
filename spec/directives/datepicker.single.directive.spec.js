@@ -1,4 +1,4 @@
-describe('directive: pa-date-input', function() {
+describe('directive: pa-datepicker (single)', function() {
 
   var getDayCells = function(element) {
     var cells = [];
