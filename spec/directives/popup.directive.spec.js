@@ -6,9 +6,13 @@ describe('directive: pa-datepicker-popup', function() {
     module('pa-datepicker-templates');
   });
 
+  afterEach(function() {
+    angular.element('body').empty();
+  });
+
   describe('open/close', function() {
 
-    beforeEach(inject(function($rootScope, $compile) {
+    beforeEach(inject(function($rootScope, $compile, $timeout) {
       this.element = angular.element('\
         <pa-datepicker-popup is-open="isPopupOpen">\
           <pa-datepicker ng-model="date.selected"></pa-datepicker>\
@@ -21,12 +25,10 @@ describe('directive: pa-datepicker-popup', function() {
       $compile(this.element)(this.scope);
       this.scope.$digest();
 
+      $timeout.flush();
+
       angular.element(document.querySelector('body')).append(this.element);
     }));
-
-    afterEach(function() {
-      angular.element('body').empty();
-    });
 
     it('starts up hidden', function() {
       expect(this.element).toBeHidden();
@@ -51,7 +53,7 @@ describe('directive: pa-datepicker-popup', function() {
 
   });
 
-  describe('outside click close', function() {
+  describe('outside click closes popup', function() {
 
     beforeEach(inject(function($rootScope, $compile, $timeout) {
       this.element = angular.element('\
@@ -78,6 +80,38 @@ describe('directive: pa-datepicker-popup', function() {
 
     it('keeps the popup opened when the datepicker is clicked', function() {
       this.element.find('th.active-month').click();
+      expect(this.element).not.toBeHidden();
+    });
+
+  });
+
+  describe('closeAfterSelection option', function() {
+
+    beforeEach(inject(function($rootScope, $compile, $timeout) {
+      this.element = angular.element('\
+        <pa-datepicker-popup is-open="isPopupOpen" close-after-selection="false">\
+          <pa-datepicker ng-model="date.selected"></pa-datepicker>\
+        </pa-datepicker-popup>\
+      ');
+
+      this.scope = $rootScope.$new();
+      this.scope.isPopupOpen = true;
+      this.scope.date = {};
+
+      $compile(this.element)(this.scope);
+      this.scope.$digest();
+
+      $timeout.flush();
+
+      angular.element('body').append(this.element);
+      angular.element('tr:nth-child(2) td:nth-child(2)').click();
+    }));
+
+    it('selects a date', function() {
+      expect(this.scope.date.selected.toUTCString()).toBe('Mon, 09 Mar 2015 03:00:00 GMT');
+    });
+
+    it('keeps the popup opened', function() {
       expect(this.element).not.toBeHidden();
     });
 
