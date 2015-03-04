@@ -81,8 +81,8 @@
           return !this.isDisabled(date) && this.container.isDateWithinBasePeriod(date);
         },
 
-        isDateWithinComparePeriod: function(date) {
-          return !this.isDisabled(date) && this.container.isDateWithinComparePeriod(date);
+        isDateWithinComparisonPeriod: function(date) {
+          return !this.isDisabled(date) && this.container.isDateWithinComparisonPeriod(date);
         },
 
       });

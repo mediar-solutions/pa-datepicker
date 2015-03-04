@@ -68,8 +68,8 @@
         },
 
         getRangePanelStart: function() {
-          if (this.ngModel.compare && this.ngModel.compare.end instanceof Date) {
-            return this.ngModel.compare.end;
+          if (this.ngModel.comparison && this.ngModel.comparison.end instanceof Date) {
+            return this.ngModel.comparison.end;
           } else if (this.ngModel.base && this.ngModel.base.end instanceof Date) {
             return this.ngModel.base.end;
           } else {
@@ -152,7 +152,7 @@
         isDateSelected: function(date) {
           if (this.isRange()) {
             return this.isDateWithinBasePeriod(date) ||
-              this.isDateWithinComparePeriod(date);
+              this.isDateWithinComparisonPeriod(date);
           }
 
           return this.ngModel && date.getTime() === this.ngModel.getTime();
@@ -162,8 +162,8 @@
           return this.isDateWithinPeriod('base', date);
         },
 
-        isDateWithinComparePeriod: function(date) {
-          return this.isDateWithinPeriod('compare', date);
+        isDateWithinComparisonPeriod: function(date) {
+          return this.isDateWithinPeriod('comparison', date);
         },
 
         isDateWithinPeriod: function(period, date) {

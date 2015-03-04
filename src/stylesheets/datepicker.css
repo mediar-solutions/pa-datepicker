@@ -79,11 +79,11 @@
   background: #428bca;
 }
 
-.date-panel td.selected.compare {
+.date-panel td.selected.comparison {
   background: #47a447;
 }
 
-.date-panel td.selected.base.compare {
+.date-panel td.selected.base.comparison {
   background: #ed9c28;
 }
 
