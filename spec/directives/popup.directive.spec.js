@@ -3,7 +3,6 @@ describe('directive: pa-datepicker-popup', function() {
 
   beforeEach(function() {
     module('pa-datepicker');
-    module('pa-datepicker-templates');
   });
 
   afterEach(function() {

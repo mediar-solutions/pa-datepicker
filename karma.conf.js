@@ -66,7 +66,7 @@ module.exports = function(config) {
     ngHtml2JsPreprocessor: {
       stripPrefix: 'src/templates/',
       prependPrefix: 'templates/pa-datepicker/',
-      moduleName: 'pa-datepicker-templates',
+      moduleName: 'pa-datepicker',
     },
     coverageReporter: {
       reporters: [{
