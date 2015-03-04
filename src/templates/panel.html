@@ -14,11 +14,9 @@
       </th>
     </tr>
     <tr>
-      <tr>
-        <th ng-repeat="date in panel.rows[0]" class="dow">
-          {{ date | date:'EEE' | limitTo:1 }}
-        </th>
-      </tr>
+      <th ng-repeat="date in panel.rows[0]" class="dow">
+        {{ date | date:'EEE' | limitTo:1 }}
+      </th>
     </tr>
   </thead>
   <tbody>
