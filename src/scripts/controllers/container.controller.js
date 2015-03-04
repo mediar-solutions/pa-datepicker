@@ -137,10 +137,6 @@
         },
 
         updateCurrentPeriod: function(start, end) {
-          if (!this.ngModel) {
-            this.ngModel = {};
-          }
-
           this.ngModel[this.currentPeriod] = { start: start, end: end };
         },
 
