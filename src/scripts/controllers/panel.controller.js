@@ -34,7 +34,10 @@
           var currentDay = 1 - this.start.getDay() + this.container.getStartingDay();
           var current = new Date(this.config.year, this.config.month, currentDay);
 
-          var rows = Math.ceil(((this.end - current) / 86400000 + 1) / 7);
+          var start = new Date(current.getTime() - current.getTimezoneOffset() * 60000);
+          var end = new Date(this.end.getTime() - this.end.getTimezoneOffset() * 60000);
+
+          var rows = Math.ceil(((end - start) / 86400000) / 7);
 
           this.fillRows(rows, current);
         },
@@ -66,7 +69,7 @@
 
         isDisabled: function(date) {
           return this.container.isDateDisabled(date) || date < this.start ||
-            date > this.end;
+            date >= this.end;
         },
 
         isDateSelected: function(date) {
