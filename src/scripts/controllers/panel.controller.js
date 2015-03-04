@@ -34,10 +34,6 @@
           var currentDay = 1 - this.start.getDay() + this.container.getStartingDay();
           var current = new Date(this.config.year, this.config.month, currentDay);
 
-          if (current > this.start) {
-            current = new Date(current.getTime() - 86400000 * 7);
-          }
-
           var rows = Math.ceil(((this.end - current) / 86400000 + 1) / 7);
 
           this.fillRows(rows, current);
