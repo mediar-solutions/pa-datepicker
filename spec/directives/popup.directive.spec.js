@@ -46,9 +46,10 @@ describe('directive: pa-datepicker-popup', function() {
       this.scope.$digest();
 
       angular.element('tr:nth-child(2) td:nth-child(2)').click();
+      var expected = new Date('2015-03-09 00:00:00');
 
       expect(this.element).toBeHidden();
-      expect(this.scope.date.selected.toUTCString()).toBe('Mon, 09 Mar 2015 03:00:00 GMT');
+      expect(this.scope.date.selected.getTime()).toBe(expected.getTime());
     });
 
   });
@@ -108,7 +109,8 @@ describe('directive: pa-datepicker-popup', function() {
     }));
 
     it('selects a date', function() {
-      expect(this.scope.date.selected.toUTCString()).toBe('Mon, 09 Mar 2015 03:00:00 GMT');
+      var expected = new Date('2015-03-09 00:00:00');
+      expect(this.scope.date.selected.getTime()).toBe(expected.getTime());
     });
 
     it('keeps the popup opened', function() {
