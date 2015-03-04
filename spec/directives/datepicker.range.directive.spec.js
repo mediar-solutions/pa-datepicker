@@ -271,6 +271,13 @@ describe('directive: pa-datepicker (range)', function() {
 
     describe('range selection', function() {
 
+      it('dont preview the selection if there are no active selection', function() {
+        this.panels.eq(1).find('tbody tr:nth-child(2) td:nth-child(3)').mouseover();
+
+        var selected = getSelectedCells(this.element);
+        expect(selected.base).toBe('0607080910');
+      });
+
       it('selects the base and comparison periods', function() {
         this.panels.eq(1).find('tbody tr:nth-child(2) td:nth-child(2)').click();
         this.panels.eq(1).find('tbody tr:nth-child(2) td:nth-child(6)').click();
