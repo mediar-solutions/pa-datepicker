@@ -3,17 +3,25 @@
   font-size: 12px;
 }
 
-.date-panel {
+.datepicker .panel-container {
+  margin: 0 -5px;
+}
+
+.datepicker .date-panel {
+  float: left;
+  width: 200px;
+  margin: 0 5px;
+}
+
+.datepicker .date-panel table {
   position: relative;
   width: 100%;
-  max-width: 200px;
-  margin: 0 auto;
   border-collapse: collapse;
   border: 1px solid #CCC;
   background: #FFF;
 }
 
-.date-panel th {
+.datepicker .date-panel th {
   padding: 5px 0;
   text-align: center;
   text-transform: capitalize;
@@ -22,7 +30,7 @@
   border: 1px solid #428bca;
 }
 
-.date-panel th a {
+.datepicker .date-panel th a {
   color: #FFF;
   text-decoration: none;
   display: block;
@@ -34,64 +42,64 @@
   top: 0;
 }
 
-.date-panel th.prev-month,
-.date-panel th.next-month {
+.datepicker .date-panel th.prev-month,
+.datepicker .date-panel th.next-month {
   padding: 0;
 }
 
-.date-panel th.prev-month a {
+.datepicker .date-panel th.prev-month a {
   left: 0;
 }
 
-.date-panel th.next-month a {
+.datepicker .date-panel th.next-month a {
   right: -1px;
 }
 
-.date-panel th.prev-month a:hover,
-.date-panel th.next-month a:hover {
+.datepicker .date-panel th.prev-month a:hover,
+.datepicker .date-panel th.next-month a:hover {
   background: #68A2D5;
 }
 
-.date-panel th.active-month {
+.datepicker .date-panel th.active-month {
   text-align: center;
 }
 
-.date-panel tbody {
+.datepicker .date-panel tbody {
   padding: 50px 0;
 }
 
-.date-panel th.dow {
+.datepicker .date-panel th.dow {
   padding: 0 0 5px 0;
 }
 
-.date-panel td {
+.datepicker .date-panel td {
   padding: 4px;
   text-align: center;
   cursor: pointer;
 }
 
-.date-panel td:hover {
+.datepicker .date-panel td:hover {
   background: #F5F5F5;
 }
 
-.date-panel td.selected {
+.datepicker .date-panel td.selected {
   color: #FFF;
   background: #428bca;
 }
 
-.date-panel td.selected.comparison {
+.datepicker .date-panel td.selected.comparison {
   background: #47a447;
 }
 
-.date-panel td.selected.base.comparison {
+.datepicker .date-panel td.selected.base.comparison {
   background: #ed9c28;
 }
 
-.date-panel td.disabled {
+.datepicker .date-panel td.disabled {
   color: #CCC;
 }
 
-.date-panel td.today {
+.datepicker .date-panel td.today {
   font-weight: bold;
 }
 
