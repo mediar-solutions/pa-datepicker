@@ -54,7 +54,6 @@
 
         preventClosing: function($event) {
           $event.stopPropagation();
-          $event.preventDefault();
         },
 
         close: function() {
