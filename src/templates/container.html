@@ -1,4 +1,4 @@
-<div class="datepicker">
+<div class="datepicker" ng-click="container.popup && container.popup.preventClosing($event)">
   <div class="row panel-container">
     <div ng-repeat="panel in container.datePanels" class="date-panel">
       <pa-panel config="panel"></pa-panel>
