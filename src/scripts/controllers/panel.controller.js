@@ -56,32 +56,40 @@
         },
 
         selectDate: function(date) {
-          if (!this.isDisabled(date)) {
+          if (this.isEnabled(date)) {
             this.container.selectDate(date);
           }
         },
 
         previewSelection: function(date) {
-          if (!this.isDisabled(date)) {
+          if (this.isEnabled(date)) {
             this.container.previewSelection(date);
           }
         },
 
+        isEnabled: function(date) {
+          return this.container.isDateEnabled(date) && this.isDateInsideMonth(date);
+        },
+
         isDisabled: function(date) {
-          return this.container.isDateDisabled(date) || date < this.start ||
-            date >= this.end;
+          return !this.isEnabled(date);
+        },
+
+        isDateInsideMonth: function(date) {
+          return this.container.compare(date, this.start) >= 0 &&
+            this.container.compare(this.end, date) >= 0;
         },
 
         isDateSelected: function(date) {
-          return !this.isDisabled(date) && this.container.isDateSelected(date);
+          return this.isEnabled(date) && this.container.isDateSelected(date);
         },
 
         isDateWithinBasePeriod: function(date) {
-          return !this.isDisabled(date) && this.container.isDateWithinBasePeriod(date);
+          return this.isEnabled(date) && this.container.isDateWithinBasePeriod(date);
         },
 
         isDateWithinComparisonPeriod: function(date) {
-          return !this.isDisabled(date) && this.container.isDateWithinComparisonPeriod(date);
+          return this.isEnabled(date) && this.container.isDateWithinComparisonPeriod(date);
         },
 
       });

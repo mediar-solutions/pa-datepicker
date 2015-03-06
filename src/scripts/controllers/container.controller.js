@@ -144,9 +144,14 @@
           return this.config.mode === 'range';
         },
 
-        isDateDisabled: function(date) {
-          return (this.config.minDate && date < this.config.minDate) ||
-            (this.config.maxDate && date > this.config.maxDate);
+        isDateEnabled: function(date) {
+          if (this.config.minDate && this.compare(date, this.config.minDate) < 0) {
+            return false;
+          } else if (this.config.maxDate && this.compare(date, this.config.maxDate) > 0) {
+            return false;
+          } else {
+            return true;
+          }
         },
 
         isDateSelected: function(date) {
@@ -174,16 +179,20 @@
           }
 
           var selection = this.ngModel[period];
-          return selection && date >= selection.start && date <= selection.end;
+
+          return selection && this.compare(date, selection.start) >= 0 &&
+            this.compare(date, selection.end) <= 0;
         },
 
         isDateWithinSelection: function(date) {
           var selection = this.selections[this.currentPeriod];
-          return date >= selection.start && date <= selection.end;
+
+          return selection && this.compare(date, selection.start) >= 0 &&
+            this.compare(date, selection.end) <= 0;
         },
 
         isToday: function(date) {
-          return date.getTime() === this.today.getTime();
+          return this.compare(date, this.today) === 0;
         },
 
         getStartingDay: function() {
@@ -194,6 +203,13 @@
           if (this.popup) {
             this.popup.close();
           }
+        },
+
+        compare: function(date1, date2) {
+          var subject1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate());
+          var subject2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+          return subject1 - subject2;
         },
 
       });
