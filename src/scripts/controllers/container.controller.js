@@ -180,15 +180,23 @@
 
           var selection = this.ngModel[period];
 
-          return selection && this.compare(date, selection.start) >= 0 &&
-            this.compare(date, selection.end) <= 0;
+          if (selection && selection.start && selection.end) {
+            return selection && this.compare(date, selection.start) >= 0 &&
+              this.compare(date, selection.end) <= 0;
+          } else {
+            return false;
+          }
         },
 
         isDateWithinSelection: function(date) {
           var selection = this.selections[this.currentPeriod];
 
-          return selection && this.compare(date, selection.start) >= 0 &&
-            this.compare(date, selection.end) <= 0;
+          if (selection && selection.start && selection.end) {
+            return selection && this.compare(date, selection.start) >= 0 &&
+              this.compare(date, selection.end) <= 0;
+          } else {
+            return false;
+          }
         },
 
         isToday: function(date) {
