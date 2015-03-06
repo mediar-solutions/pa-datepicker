@@ -8,7 +8,6 @@
       angular.extend(this, {
 
         init: function() {
-          this.updatePanel();
           this.initConfigWatcher();
         },
 
