@@ -81,12 +81,22 @@
         },
 
         getRangePanelStart: function() {
-          if (this.ngModel.comparison && this.ngModel.comparison.end instanceof Date) {
-            return this.ngModel.comparison.end;
-          } else if (this.ngModel.base && this.ngModel.base.end instanceof Date) {
-            return this.ngModel.base.end;
+          if (this.ngModel.base && this.ngModel.base.end instanceof Date) {
+            if (this.ngModel.comparison && this.ngModel.comparison.end instanceof Date) {
+              return this.getFurtherDate();
+            } else {
+              return this.ngModel.base.end;
+            }
           } else {
             return this.today;
+          }
+        },
+
+        getFurtherDate: function() {
+          if (this.compare(this.ngModel.comparison.end, this.ngModel.base.end) > 0) {
+            return this.ngModel.comparison.end;
+          } else {
+            return this.ngModel.base.end;
           }
         },
 
