@@ -56,6 +56,9 @@
             this.ngModel = {};
           } else if (this.ngModel instanceof Date) {
             this.ngModel.setHours(0, 0, 0, 0);
+          } else if (typeof(this.ngModel) === 'string' || this.ngModel instanceof String) {
+            this.ngModel = new Date(this.ngModel);
+            this.ngModel.setHours(0, 0, 0, 0);
           }
         },
 

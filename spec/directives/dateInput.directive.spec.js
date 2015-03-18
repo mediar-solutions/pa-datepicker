@@ -86,4 +86,22 @@ describe('directive: pa-date-input', function() {
 
   });
 
+  describe('test initialize from string', function() {
+
+    beforeEach(inject(function($rootScope, $compile) {
+      this.element = angular.element('<pa-date-input ng-model="date"></pa-date-input>');
+
+      this.scope = $rootScope.$new();
+      this.scope.date = "2015-03-25T03:00:00.000Z";
+
+      $compile(this.element)(this.scope);
+      this.scope.$digest();
+    }));
+
+    it('formats the date correctly', function() {
+      expect(this.element.val()).toBe('3/25/15');
+    });
+
+  });
+
 });
