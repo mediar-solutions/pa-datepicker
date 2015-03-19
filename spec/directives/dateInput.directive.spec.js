@@ -86,7 +86,7 @@ describe('directive: pa-date-input', function() {
 
   });
 
-  describe('test initialize from string', function() {
+  describe('when the model is a string', function() {
 
     beforeEach(inject(function($rootScope, $compile) {
       this.element = angular.element('<pa-date-input ng-model="date"></pa-date-input>');
@@ -98,7 +98,7 @@ describe('directive: pa-date-input', function() {
       this.scope.$digest();
     }));
 
-    it('when the model is a string', function() {
+    it('formats the date correctly', function() {
       expect(this.element.val()).toBe('3/25/15');
     });
 
