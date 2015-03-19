@@ -3,7 +3,7 @@
   'use strict';
 
   angular.module('pa-datepicker').controller('DatepickerContainerCtrl',
-    ['paDatepickerConfig', function(paDatepickerConfig) {
+    ['$scope', 'paDatepickerConfig', function($scope, paDatepickerConfig) {
 
       angular.extend(this, {
 
@@ -16,6 +16,14 @@
           this.initCurrentPeriod();
           this.initModel();
           this.initPanels();
+          this.initMonitorWatcher();
+        },
+
+        initMonitorWatcher: function() {
+          $scope.$watch(
+            function() { return this.ngModel; }.bind(this),
+            this.initModel.bind(this)
+          );
         },
 
         initConfig: function() {
@@ -163,7 +171,7 @@
               this.isDateWithinComparisonPeriod(date);
           }
 
-          return this.ngModel && date.getTime() === this.ngModel.getTime();
+          return this.ngModel instanceof Date && date.getTime() === this.ngModel.getTime();
         },
 
         isDateWithinBasePeriod: function(date) {
