@@ -98,7 +98,7 @@ describe('directive: pa-date-input', function() {
       this.scope.$digest();
     }));
 
-    it('formats the date correctly', function() {
+    it('when the model is a string', function() {
       expect(this.element.val()).toBe('3/25/15');
     });
 
