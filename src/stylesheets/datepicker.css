@@ -22,11 +22,8 @@
 }
 
 .datepicker .date-panel th {
-  padding: 5px 0;
   text-align: center;
   text-transform: capitalize;
-  background: #428bca;
-  color: #FFF;
   border: 1px solid #428bca;
 }
 
@@ -36,10 +33,27 @@
   display: block;
   position: relative;
   width: 29px;
-  height: 29px;
-  line-height: 29px;
+  height: 31px;
+  line-height: 31px;
   position: absolute;
   top: 0;
+}
+
+.datepicker .date-panel thead tr:nth-child(1) th {
+  border-bottom: 2px solid #285379;
+  padding: 6px 0;
+  background: #428bca;
+  color: #FFF;
+}
+
+.datepicker .date-panel thead tr:nth-child(2) th {
+  padding: 4px 0;
+  background: #F0F0F0;
+  border: none;
+  color: #AAA;
+  font-weight: normal;
+  font-size: 10px;
+  border-bottom: 1px solid #E9E9E9;
 }
 
 .datepicker .date-panel th.prev-month,

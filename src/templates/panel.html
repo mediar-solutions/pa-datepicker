@@ -3,19 +3,23 @@
     <tr>
       <th class="prev-month">
         <a href="#" ng-show="panel.config.first"
-          ng-click="panel.container.updatePanels(-1, $event)">&lt;</a>
+          ng-click="panel.container.updatePanels(-1, $event)">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
       </th>
       <th colspan="5" class="active-month">
         {{ panel.start | date:'MMMM yyyy' }}
       </th>
       <th class="next-month">
         <a href="#" ng-show="panel.config.last"
-          ng-click="panel.container.updatePanels(1, $event)">&gt;</a>
+          ng-click="panel.container.updatePanels(1, $event)">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
       </th>
     </tr>
     <tr>
       <th ng-repeat="date in panel.rows[0]" class="dow">
-        {{ date | date:'EEE' | limitTo:1 }}
+        {{ date | date:'EEEE' | limitTo:3 }}
       </th>
     </tr>
   </thead>
