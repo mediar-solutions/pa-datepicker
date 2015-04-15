@@ -96,7 +96,7 @@ describe('directive: pa-datepicker-popup', function() {
 
       this.scope = $rootScope.$new();
       this.scope.isPopupOpen = true;
-      this.scope.date = {};
+      this.scope.date = { selected: new Date('2015-03-02 00:00:00') };
 
       $compile(this.element)(this.scope);
       this.scope.$digest();

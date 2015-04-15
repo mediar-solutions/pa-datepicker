@@ -91,14 +91,14 @@ describe('directive: pa-datepicker (range)', function() {
     });
 
     it('shows the navigation buttons correctly', function() {
-      expect(this.panels.eq(0).find('.prev-month a')).toBeVisible();
-      expect(this.panels.eq(0).find('.next-month a')).not.toBeVisible();
+      expect(this.panels.eq(0).find('.prev-month a')).not.toHaveClass('ng-hide');
+      expect(this.panels.eq(0).find('.next-month a')).toHaveClass('ng-hide');
 
-      expect(this.panels.eq(1).find('.prev-month a')).not.toBeVisible();
-      expect(this.panels.eq(1).find('.next-month a')).not.toBeVisible();
+      expect(this.panels.eq(1).find('.prev-month a')).toHaveClass('ng-hide');
+      expect(this.panels.eq(1).find('.next-month a')).toHaveClass('ng-hide');
 
-      expect(this.panels.eq(2).find('.prev-month a')).not.toBeVisible();
-      expect(this.panels.eq(2).find('.next-month a')).toBeVisible();
+      expect(this.panels.eq(2).find('.prev-month a')).toHaveClass('ng-hide');
+      expect(this.panels.eq(2).find('.next-month a')).not.toHaveClass('ng-hide');
     });
 
     describe('navigating back', function() {

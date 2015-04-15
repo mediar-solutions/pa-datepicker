@@ -59,12 +59,12 @@ describe('directive: pa-datepicker (single)', function() {
       var cells = this.element.find('tr:nth-child(2) th').text();
       var weekdays = cells.replace(/\s/g, '');
 
-      expect(weekdays).toBe('SMTWTFS');
+      expect(weekdays).toBe('SunMonTueWedThuFriSat');
     });
 
     it('shows the navigation buttons', function() {
-      expect(this.element.find('.prev-month a')).toBeVisible();
-      expect(this.element.find('.next-month a')).toBeVisible();
+      expect(this.element.find('.prev-month a')).not.toHaveClass('ng-hide');
+      expect(this.element.find('.next-month a')).not.toHaveClass('ng-hide');
     });
 
     describe('navigating back', function() {
@@ -190,7 +190,7 @@ describe('directive: pa-datepicker (single)', function() {
         var cells = this.element.find('tr:nth-child(2) th').text();
         var weekdays = cells.replace(/\s/g, '');
 
-        expect(weekdays).toBe('TWTFSSM');
+        expect(weekdays).toBe('TueWedThuFriSatSunMon');
       });
 
       it('shows the right days', function() {
