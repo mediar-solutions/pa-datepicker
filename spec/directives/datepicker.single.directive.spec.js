@@ -173,6 +173,30 @@ describe('directive: pa-datepicker (single)', function() {
 
   });
 
+  describe('when the model is a string', function() {
+
+    beforeEach(inject(function($rootScope, $compile) {
+      this.element = angular.element('<pa-datepicker ng-model="date"></pa-datepicker>');
+
+      this.scope = $rootScope.$new();
+      this.scope.date = '2015-01-15 00:00:00';
+
+      $compile(this.element)(this.scope);
+      this.scope.$digest();
+
+      angular.element('body').append(this.element);
+    }));
+
+    it('converts the model to a Date object', function() {
+      expect(this.scope.date).toEqual(new Date('2015-01-15 00:00:00'));
+    });
+
+    it('starts in the right month', function() {
+      expect(this.element.find('.active-month')).toHaveText('January 2015');
+    });
+
+  });
+
   describe('overriding default options', function() {
 
     beforeEach(inject(function($rootScope, $compile, paDatepickerConfig) {
