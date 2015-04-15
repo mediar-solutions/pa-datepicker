@@ -339,6 +339,38 @@ describe('directive: pa-datepicker (range)', function() {
 
     });
 
+  describe('panel month selection', function() {
+
+    it('shows the right months if the comparison period is further than the base period', function() {
+      var titles = this.panels.find('thead tr:nth-child(1) th:nth-child(2)');
+
+      expect(titles.eq(0).text().trim()).toBe('February 2015');
+      expect(titles.eq(1).text().trim()).toBe('March 2015');
+      expect(titles.eq(2).text().trim()).toBe('April 2015');
+    });
+
+    it('shows the right months if the comparison period is further than the base period', function() {
+      this.scope.date = {
+        base: {
+          start: new Date('2015-06-06 00:00:00'),
+          end: new Date('2015-06-10 00:00:00'),
+        },
+        comparison: {
+          start: new Date('2015-04-08 00:00:00'),
+          end: new Date('2015-04-12 00:00:00'),
+        }
+      };
+
+      this.scope.$apply();
+      var titles = this.panels.find('thead tr:nth-child(1) th:nth-child(2)');
+
+      expect(titles.eq(0).text().trim()).toBe('February 2015');
+      expect(titles.eq(1).text().trim()).toBe('March 2015');
+      expect(titles.eq(2).text().trim()).toBe('April 2015');
+    });
+
+  });
+
   });
 
 });

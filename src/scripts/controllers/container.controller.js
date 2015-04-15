@@ -217,12 +217,8 @@
         isDateWithinSelection: function(date) {
           var selection = this.selections[this.currentPeriod];
 
-          if (selection && selection.start && selection.end) {
-            return selection && this.compare(date, selection.start) >= 0 &&
-              this.compare(date, selection.end) <= 0;
-          } else {
-            return false;
-          }
+          return selection && this.compare(date, selection.start) >= 0 &&
+            this.compare(date, selection.end) <= 0;
         },
 
         isToday: function(date) {
