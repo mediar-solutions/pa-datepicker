@@ -8,7 +8,6 @@
       angular.extend(this, {
 
         init: function() {
-          this.datePanels = [];
           this.selections = {};
 
           this.initConfig();
@@ -20,10 +19,12 @@
         },
 
         initMonitorWatcher: function() {
-          $scope.$watch(
-            function() { return this.ngModel; }.bind(this),
-            this.initModel.bind(this)
-          );
+          $scope.$watch(function() {
+            return this.ngModel;
+          }.bind(this), function() {
+            this.initModel();
+            this.initPanels();
+          }.bind(this));
         },
 
         initConfig: function() {
@@ -42,6 +43,8 @@
         },
 
         initPanels: function() {
+          this.datePanels = [];
+
           var numberOfPanels = parseInt(this.config.panels, 10);
           var base = this.getPanelStart();
 
