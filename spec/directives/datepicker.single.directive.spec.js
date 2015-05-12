@@ -204,6 +204,7 @@ describe('directive: pa-datepicker (single)', function() {
 
       angular.extend(paDatepickerConfig, {
         startingDay: 2,
+        showOutliers: false,
         minDate: new Date('2015-04-10 00:00:00'),
         maxDate: new Date('2015-04-20 00:00:00'),
       });
@@ -262,6 +263,26 @@ describe('directive: pa-datepicker (single)', function() {
       it('disables dates higher than April 10', function() {
         expect(this.element.find('tr:nth-child(5) td:nth-child(2)')).toHaveClass('disabled');
         expect(this.element.find('tr:nth-child(4) td:nth-child(5)')).toHaveClass('disabled');
+      });
+
+    });
+
+    describe('showOutliers', function() {
+
+      it('disables dates before April 2014', function() {
+        expect(this.element.find('tr:nth-child(1) td:nth-child(1) span')).toHaveClass('ng-hide');
+      });
+
+      it('disables dates after April 2014', function() {
+        expect(this.element.find('tr:nth-child(5) td:nth-child(4) span')).toHaveClass('ng-hide');
+        expect(this.element.find('tr:nth-child(5) td:nth-child(5) span')).toHaveClass('ng-hide');
+        expect(this.element.find('tr:nth-child(5) td:nth-child(6) span')).toHaveClass('ng-hide');
+        expect(this.element.find('tr:nth-child(5) td:nth-child(7) span')).toHaveClass('ng-hide');
+      });
+
+      it('shows dates inside April', function() {
+        expect(this.element.find('tr:nth-child(1) td:nth-child(2) span')).not.toHaveClass('ng-hide');
+        expect(this.element.find('tr:nth-child(5) td:nth-child(3) span')).not.toHaveClass('ng-hide');
       });
 
     });

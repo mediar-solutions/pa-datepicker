@@ -16,6 +16,7 @@
         mode: '@',
         currentPeriod: '=?',
         startingDay: '@',
+        showOutliers: '@',
         minDate: '=',
         maxDate: '=',
         ngModel: '=',

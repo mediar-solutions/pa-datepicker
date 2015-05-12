@@ -111,6 +111,11 @@
 
 .datepicker .date-panel td.disabled {
   color: #CCC;
+  cursor: default;
+}
+
+.datepicker .date-panel td.disabled:hover {
+  background: transparent;
 }
 
 .datepicker .date-panel td.today {

@@ -6,6 +6,7 @@
     panels: 1,
     mode: 'single',
     startingDay: 0,
+    showOutliers: true,
     minDate: null,
     maxDate: null,
     popup: {

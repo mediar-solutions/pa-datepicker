@@ -32,7 +32,8 @@
 
           angular.forEach(this.config, function(value, option) {
             if (typeof this[option] !== 'undefined') {
-              this.config[option] = this[option];
+              var newValue = this[option] !== 'false' ? this[option] : false;
+              this.config[option] = newValue;
             }
           }.bind(this));
         },
