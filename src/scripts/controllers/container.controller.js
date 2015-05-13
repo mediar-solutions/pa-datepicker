@@ -3,7 +3,8 @@
   'use strict';
 
   angular.module('pa-datepicker').controller('DatepickerContainerCtrl',
-    ['$scope', 'paDatepickerConfig', function($scope, paDatepickerConfig) {
+    ['$rootScope', '$scope', 'paDatepickerConfig',
+    function($rootScope, $scope, paDatepickerConfig) {
 
       angular.extend(this, {
 
@@ -133,6 +134,7 @@
 
         startSelection: function(date) {
           this.selections[this.currentPeriod] = { selected: date, start: date, end: date };
+          $rootScope.$broadcast('paDatepicker.selection.started');
         },
 
         previewSelection: function(date) {
@@ -161,6 +163,7 @@
           }
 
           this.selections[this.currentPeriod] = null;
+          $rootScope.$broadcast('paDatepicker.selection.ended');
         },
 
         updateCurrentPeriod: function(start, end) {

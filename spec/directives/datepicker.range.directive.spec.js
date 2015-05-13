@@ -241,6 +241,8 @@ describe('directive: pa-datepicker (range)', function() {
           current-period="currentPeriod"></pa-datepicker>\
       ');
 
+      this.rootScope = $rootScope;
+
       this.scope = $rootScope.$new();
       this.scope.date = {
         base: {
@@ -275,6 +277,16 @@ describe('directive: pa-datepicker (range)', function() {
 
         var selected = getSelectedCells(this.element);
         expect(selected.base).toBe('0607080910');
+      });
+
+      it('broadcasts the selection events', function() {
+        this.rootScope.$broadcast = jasmine.createSpy();
+        this.panels.eq(1).find('tbody tr:nth-child(2) td:nth-child(2)').click();
+        expect(this.rootScope.$broadcast).toHaveBeenCalledWith('paDatepicker.selection.started');
+
+        this.rootScope.$broadcast = jasmine.createSpy();
+        this.panels.eq(1).find('tbody tr:nth-child(2) td:nth-child(6)').click();
+        expect(this.rootScope.$broadcast).toHaveBeenCalledWith('paDatepicker.selection.ended');
       });
 
       it('selects the base and comparison periods', function() {
