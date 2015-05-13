@@ -3,14 +3,15 @@
   'use strict';
 
   angular.module('pa-datepicker').controller('DatepickerPopupCtrl',
-    ['$scope', '$document', '$timeout', 'paDatepickerConfig',
-    function($scope, $document, $timeout, paDatepickerConfig) {
+    ['$rootScope', '$scope', '$document', '$timeout', 'paDatepickerConfig',
+    function($rootScope, $scope, $document, $timeout, paDatepickerConfig) {
 
       angular.extend(this, {
 
         init: function() {
           this.initOpeningWatcher();
           this.initConfig();
+          this.initSelectionHandlers();
           this.initClickHandler();
           this.openingHandler();
         },
@@ -28,6 +29,16 @@
           if (this.closeAfterSelection !== undefined) {
             this.config.closeAfterSelection = this.closeAfterSelection === 'true';
           }
+        },
+
+        initSelectionHandlers: function() {
+          $rootScope.$on('paDatepicker.selection.started', function() {
+            this.isSelectingPeriod = true;
+          }.bind(this));
+
+          $rootScope.$on('paDatepicker.selection.ended', function() {
+            this.isSelectingPeriod = false;
+          }.bind(this));
         },
 
         initClickHandler: function() {
@@ -48,7 +59,11 @@
 
         onClickOutside: function() {
           $scope.$apply(function() {
-            this.isOpen = false;
+            if (this.isSelectingPeriod !== true) {
+              this.closePopup();
+            } else {
+              $rootScope.$broadcast('paDatepicker.popup.unfinishedSelection');
+            }
           }.bind(this));
         },
 
@@ -58,9 +73,13 @@
 
         close: function() {
           if (this.config.closeAfterSelection) {
-            this.isOpen = false;
-            this.openingHandler();
+            this.closePopup();
           }
+        },
+
+        closePopup: function() {
+          this.isOpen = false;
+          this.openingHandler();
         },
 
       });

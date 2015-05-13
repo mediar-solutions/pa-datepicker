@@ -55,32 +55,107 @@ describe('directive: pa-datepicker-popup', function() {
 
   describe('outside click closes popup', function() {
 
-    beforeEach(inject(function($rootScope, $compile, $timeout) {
-      this.element = angular.element('\
-        <pa-datepicker-popup is-open="isPopupOpen">\
-          <pa-datepicker ng-model="date"></pa-datepicker>\
-        </pa-datepicker-popup>\
-      ');
+    function checkPopupClosing() {
+      it('closes when clicking outside of datepicker', function() {
+        $(document).click();
+        expect(this.element).toBeHidden();
+      });
 
-      this.scope = $rootScope.$new();
-      this.scope.isPopupOpen = true;
+      it('keeps the popup opened when the datepicker is clicked', function() {
+        this.element.find('th.active-month').click();
+        expect(this.element).not.toBeHidden();
+      });
+    }
 
-      $compile(this.element)(this.scope);
-      this.scope.$digest();
+    describe('when the datepicker is in single date mode', function() {
 
-      $timeout.flush();
+      beforeEach(inject(function($rootScope, $compile, $timeout) {
+        this.element = angular.element('\
+          <pa-datepicker-popup is-open="isPopupOpen">\
+            <pa-datepicker ng-model="date"></pa-datepicker>\
+          </pa-datepicker-popup>\
+        ');
 
-      angular.element('body').append(this.element);
-    }));
+        this.scope = $rootScope.$new();
+        this.scope.isPopupOpen = true;
 
-    it('closes when clicking outside of datepicker', function() {
-      $(document).click();
-      expect(this.element).toBeHidden();
+        $compile(this.element)(this.scope);
+        this.scope.$digest();
+
+        $timeout.flush();
+
+        angular.element('body').append(this.element);
+      }));
+
+      checkPopupClosing();
+
     });
 
-    it('keeps the popup opened when the datepicker is clicked', function() {
-      this.element.find('th.active-month').click();
-      expect(this.element).not.toBeHidden();
+    describe('when the datepicker is in range mode', function() {
+
+      beforeEach(inject(function($rootScope, $compile, $timeout) {
+        this.element = angular.element('\
+          <pa-datepicker-popup is-open="isPopupOpen">\
+            <pa-datepicker ng-model="date" mode="range"></pa-datepicker>\
+          </pa-datepicker-popup>\
+        ');
+
+        this.rootScope = $rootScope;
+
+        this.scope = $rootScope.$new();
+        this.scope.isPopupOpen = true;
+        this.scope.date = {
+          base: {
+            start: new Date('2015-04-06 00:00:00'),
+            end: new Date('2015-04-10 00:00:00'),
+          }
+        };
+
+        $compile(this.element)(this.scope);
+        this.scope.$digest();
+
+        $timeout.flush();
+
+        angular.element('body').append(this.element);
+      }));
+
+      describe('when there is no selection', function() {
+
+        checkPopupClosing();
+
+      });
+
+      describe('when there is a selection started', function() {
+
+        beforeEach(function() {
+          this.element
+            .find('.date-panel:nth-child(1) tbody tr:nth-child(2) td:nth-child(2)')
+            .click();
+        });
+
+        it('keeps the popup opened when clicking outside of datepicker', function() {
+          $(document).click();
+          expect(this.element).not.toBeHidden();
+        });
+
+        it('broadcasts an event', function() {
+          this.rootScope.$broadcast = jasmine.createSpy();
+          $(document).click();
+
+          expect(this.rootScope.$broadcast)
+            .toHaveBeenCalledWith('paDatepicker.popup.unfinishedSelection');
+        });
+
+        it('closes the popup after the selection', function() {
+          this.element
+            .find('.date-panel:nth-child(1) tbody tr:nth-child(2) td:nth-child(3)')
+            .click();
+
+          expect(this.element).toBeHidden();
+        });
+
+      });
+
     });
 
   });
