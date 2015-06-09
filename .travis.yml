@@ -1,13 +1,13 @@
 language: node_js
 node_js:
   - "0.12.4"
-
 addons:
   code_climate:
     repo_token: d92f8a06d44c9ed8ae407addfff0b3ec22040ed8cca6686f5b3ffbeda1e2c780
-
 script:
   - "npm run test-single-run"
-
 after_script:
   - "./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage.info"
+notifications:
+  hipchat:
+    secure: "hEp7tbwPbLK3yEsduzGEJMROuL2uOyt+VeKdHONCBZGFAF/N2Fu3Z89zzjDB1K9RwMi8KTLdHr1JnrdG1jAiP5W2/pA7C9PRZjb+OZ08bDhBKLGWd+mW7A3ZmXdsz8NC9+WZ9GkHRF97Jdv4VwyV2ciwk5P0MbFjDt/NG9n1gbY="
