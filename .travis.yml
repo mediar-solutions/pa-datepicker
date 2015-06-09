@@ -9,5 +9,10 @@ script:
 after_script:
   - "./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage.info"
 notifications:
+  email: false
   hipchat:
-    secure: "hEp7tbwPbLK3yEsduzGEJMROuL2uOyt+VeKdHONCBZGFAF/N2Fu3Z89zzjDB1K9RwMi8KTLdHr1JnrdG1jAiP5W2/pA7C9PRZjb+OZ08bDhBKLGWd+mW7A3ZmXdsz8NC9+WZ9GkHRF97Jdv4VwyV2ciwk5P0MbFjDt/NG9n1gbY="
+    rooms:
+      secure: "UvS5UdLDKhhAtfLj6AszfeWXsa2avrN5s1vItQ4wd6lcagSGTN1nbo6tUJ4wuD5ao9OCNOe+X6VxvRtWkZjYzujxknn9DkRh+CFoJPH+gfcsSVG34fKlCodcPIYne/ondMxqNfwZJRvI/5wYYhSmAZ0AoK9RUbXNWycBRAdG3qk="
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+    notify: true
