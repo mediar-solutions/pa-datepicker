@@ -10,4 +10,4 @@ script:
   - "npm run test-single-run"
 
 after_script:
-  - "codeclimate.js < coverage.info"
+  - "./node_modules/codeclimate-test-reporter/bin/codeclimate.js < coverage.info"
