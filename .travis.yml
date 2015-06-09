@@ -3,4 +3,4 @@ node_js:
   - "0.12.0"
 
 script:
-  -./node_modules/karma/bin/karma start karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox
+  - "./node_modules/karma/bin/karma start karma.conf.js --no-auto-watch --single-run --reporters=dots --browsers=Firefox"
