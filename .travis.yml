@@ -4,7 +4,7 @@ node_js:
 
 addons:
   code_climate:
-    repo_token: 07f2aa2c42ea95f7f099397a6aadf66d5d8249824608c159a06cef1ad05ddc77
+    repo_token: d92f8a06d44c9ed8ae407addfff0b3ec22040ed8cca6686f5b3ffbeda1e2c780
 
 script:
   - "npm run test-single-run"
