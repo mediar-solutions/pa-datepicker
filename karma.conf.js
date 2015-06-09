@@ -8,6 +8,9 @@ var getFilesList = function() {
     'bower_components/angular/angular.js',
   ];
 
+  // mocks
+  scripts.unshift('spec/support/bindMock.js');
+
   // appends appliction files
   scripts = scripts.concat(files.scripts);
 
@@ -56,10 +59,9 @@ module.exports = function(config) {
     reporters: getReporters(),
     autoWatch : true,
     frameworks: ['jasmine'],
-    browsers : ['Chrome'],
+    browsers : ['PhantomJS'],
     plugins : [
-      'karma-chrome-launcher',
-      'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor',
       'karma-coverage',
