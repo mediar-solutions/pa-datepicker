@@ -19,7 +19,7 @@ describe('directive: pa-datepicker-popup', function() {
       ');
 
       this.scope = $rootScope.$new();
-      this.scope.date = { selected: new Date('2015-03-02 00:00:00') };
+      this.scope.date = { selected: new Date(2015, 2, 2, 0, 0, 0) };
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -45,7 +45,7 @@ describe('directive: pa-datepicker-popup', function() {
       this.scope.$digest();
 
       angular.element('tr:nth-child(2) td:nth-child(2)').click();
-      var expected = new Date('2015-03-09 00:00:00');
+      var expected = new Date(2015, 2, 9, 0, 0, 0);
 
       expect(this.element).toBeHidden();
       expect(this.scope.date.selected.getTime()).toBe(expected.getTime());
@@ -106,8 +106,8 @@ describe('directive: pa-datepicker-popup', function() {
         this.scope.isPopupOpen = true;
         this.scope.date = {
           base: {
-            start: new Date('2015-04-06 00:00:00'),
-            end: new Date('2015-04-10 00:00:00'),
+            start: new Date(2015, 3, 6, 0, 0, 0),
+            end: new Date(2015, 3, 10, 0, 0, 0),
           }
         };
 
@@ -171,7 +171,7 @@ describe('directive: pa-datepicker-popup', function() {
 
       this.scope = $rootScope.$new();
       this.scope.isPopupOpen = true;
-      this.scope.date = { selected: new Date('2015-03-02 00:00:00') };
+      this.scope.date = { selected: new Date(2015, 2, 2, 0, 0, 0) };
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -183,7 +183,7 @@ describe('directive: pa-datepicker-popup', function() {
     }));
 
     it('selects a date', function() {
-      var expected = new Date('2015-03-09 00:00:00');
+      var expected = new Date(2015, 2, 9, 0, 0, 0);
       expect(this.scope.date.selected.getTime()).toBe(expected.getTime());
     });
 

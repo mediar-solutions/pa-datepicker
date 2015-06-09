@@ -107,7 +107,7 @@ describe('directive: pa-datepicker (single)', function() {
       this.element = angular.element('<pa-datepicker ng-model="date"></pa-datepicker>');
 
       this.scope = $rootScope.$new();
-      this.scope.date = new Date('2015-04-15 00:00:00');
+      this.scope.date = new Date(2015, 3, 15, 0, 0, 0);
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -132,7 +132,7 @@ describe('directive: pa-datepicker (single)', function() {
     });
 
     it('shows the right days if the model changes', function() {
-      this.scope.date = new Date('2015-01-01 00:00:00');
+      this.scope.date = new Date(2015, 0, 1, 0, 0, 0);
       this.scope.$digest();
 
       var cells = getDayCells(this.element);
@@ -147,7 +147,7 @@ describe('directive: pa-datepicker (single)', function() {
     });
 
     it('shows the right days if the month has 6 rows with only one day at the last one', function() {
-      this.scope.date = new Date('2015-05-11 00:00:00');
+      this.scope.date = new Date(2015, 4, 11, 0, 0, 0);
       this.scope.$digest();
 
       var cells = getDayCells(this.element);
@@ -168,7 +168,7 @@ describe('directive: pa-datepicker (single)', function() {
 
     it('selects another date', function() {
       this.element.find('tbody tr:nth-child(2) td:nth-child(4)').click();
-      var expected = new Date('2015-04-08 00:00:00');
+      var expected = new Date(2015, 3, 8, 0, 0, 0);
 
       expect(this.scope.date.getTime()).toBe(expected.getTime());
       expect(this.element.find('td.selected')).toHaveText('08');
@@ -195,7 +195,7 @@ describe('directive: pa-datepicker (single)', function() {
       this.element = angular.element('<pa-datepicker ng-model="date"></pa-datepicker>');
 
       this.scope = $rootScope.$new();
-      this.scope.date = '2015-01-15 00:00:00';
+      this.scope.date = '2015-01-15T00:00:00+00:00';
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -204,7 +204,7 @@ describe('directive: pa-datepicker (single)', function() {
     }));
 
     it('converts the model to a Date object', function() {
-      expect(this.scope.date).toEqual(new Date('2015-01-15 00:00:00'));
+      expect(this.scope.date.getTime()).toBe(1421200800000);
     });
 
     it('starts in the right month', function() {
@@ -221,14 +221,14 @@ describe('directive: pa-datepicker (single)', function() {
       angular.extend(paDatepickerConfig, {
         startingDay: 2,
         showOutliers: false,
-        minDate: new Date('2015-04-10 00:00:00'),
-        maxDate: new Date('2015-04-20 00:00:00'),
+        minDate: new Date(2015, 3, 10, 0, 0, 0),
+        maxDate: new Date(2015, 3, 20, 0, 0, 0),
       });
 
       this.element = angular.element('<pa-datepicker ng-model="date"></pa-datepicker>');
 
       this.scope = $rootScope.$new();
-      this.scope.date = new Date('2015-04-15 00:00:00');
+      this.scope.date = new Date(2015, 3, 15, 0, 0, 0);
 
       $compile(this.element)(this.scope);
       this.scope.$digest();

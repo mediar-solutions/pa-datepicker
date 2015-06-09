@@ -10,7 +10,7 @@ describe('directive: pa-date-input', function() {
       this.element = angular.element('<pa-date-input ng-model="date"></pa-date-input>');
 
       this.scope = $rootScope.$new();
-      this.scope.date = new Date('2015-03-02 00:00:00');
+      this.scope.date = new Date(2015, 2, 2, 0, 0, 0);
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -24,7 +24,7 @@ describe('directive: pa-date-input', function() {
       this.element.val('4/3/16').trigger('input');
       this.scope.$apply();
 
-      var expected = new Date('2016-04-03 00:00:00');
+      var expected = new Date(2016, 3, 3, 0, 0, 0);
       expect(this.scope.date.getTime()).toBe(expected.getTime());
     });
 
@@ -32,7 +32,7 @@ describe('directive: pa-date-input', function() {
       this.element.val('04/03/16').trigger('input');
       this.scope.$apply();
 
-      var expected = new Date('2016-04-03 00:00:00');
+      var expected = new Date(2016, 3, 3, 0, 0, 0);
       expect(this.scope.date.getTime()).toBe(expected.getTime());
     });
 
@@ -58,7 +58,7 @@ describe('directive: pa-date-input', function() {
       this.element = angular.element('<pa-date-input ng-model="date" format="dd/MM/yyyy"></pa-date-input>');
 
       this.scope = $rootScope.$new();
-      this.scope.date = new Date('2015-03-02 00:00:00');
+      this.scope.date = new Date(2015, 2, 2, 0, 0, 0);
 
       $compile(this.element)(this.scope);
       this.scope.$digest();
@@ -72,7 +72,7 @@ describe('directive: pa-date-input', function() {
       this.element.val('03/04/2016').trigger('input');
       this.scope.$apply();
 
-      var expected = new Date('2016-04-03 00:00:00');
+      var expected = new Date(2016, 3, 3, 0, 0, 0);
       expect(this.scope.date.getTime()).toBe(expected.getTime());
     });
 
@@ -80,7 +80,7 @@ describe('directive: pa-date-input', function() {
       this.element.val('3/4/2016').trigger('input');
       this.scope.$apply();
 
-      var expected = new Date('2016-04-03 00:00:00');
+      var expected = new Date(2016, 3, 3, 0, 0, 0);
       expect(this.scope.date.getTime()).toBe(expected.getTime());
     });
 

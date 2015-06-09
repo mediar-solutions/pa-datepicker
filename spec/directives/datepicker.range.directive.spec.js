@@ -173,8 +173,8 @@ describe('directive: pa-datepicker (range)', function() {
       this.scope = $rootScope.$new();
       this.scope.date = {
         base: {
-          start: new Date('2015-04-06 00:00:00'),
-          end: new Date('2015-04-10 00:00:00'),
+          start: new Date(2015, 3, 6, 0, 0, 0),
+          end: new Date(2015, 3, 10, 0, 0, 0),
         }
       };
 
@@ -246,12 +246,12 @@ describe('directive: pa-datepicker (range)', function() {
       this.scope = $rootScope.$new();
       this.scope.date = {
         base: {
-          start: new Date('2015-04-06 00:00:00'),
-          end: new Date('2015-04-10 00:00:00'),
+          start: new Date(2015, 3, 6, 0, 0, 0),
+          end: new Date(2015, 3, 10, 0, 0, 0),
         },
         comparison: {
-          start: new Date('2015-04-08 00:00:00'),
-          end: new Date('2015-04-12 00:00:00'),
+          start: new Date(2015, 3, 8, 0, 0, 0),
+          end: new Date(2015, 3, 12, 0, 0, 0),
         }
       };
 
@@ -301,12 +301,12 @@ describe('directive: pa-datepicker (range)', function() {
 
         var expected = {
           base: {
-            start: new Date('2015-03-09 00:00:00'),
-            end: new Date('2015-03-13 00:00:00'),
+            start: new Date(2015, 2, 9, 0, 0, 0),
+            end: new Date(2015, 2, 13, 0, 0, 0),
           },
           comparison: {
-            start: new Date('2015-03-16 00:00:00'),
-            end: new Date('2015-03-20 00:00:00'),
+            start: new Date(2015, 2, 16, 0, 0, 0),
+            end: new Date(2015, 2, 20, 0, 0, 0),
           },
         };
 
@@ -324,8 +324,8 @@ describe('directive: pa-datepicker (range)', function() {
 
         var expected = {
           base: {
-            start: new Date('2015-03-09 00:00:00'),
-            end: new Date('2015-03-13 00:00:00'),
+            start: new Date(2015, 2, 9, 0, 0, 0),
+            end: new Date(2015, 2, 13, 0, 0, 0),
           },
         };
 
@@ -364,12 +364,12 @@ describe('directive: pa-datepicker (range)', function() {
     it('shows the right months if the comparison period is further than the base period', function() {
       this.scope.date = {
         base: {
-          start: new Date('2015-06-06 00:00:00'),
-          end: new Date('2015-06-10 00:00:00'),
+          start: new Date(2015, 5, 6, 0, 0, 0),
+          end: new Date(2015, 5, 10, 0, 0, 0),
         },
         comparison: {
-          start: new Date('2015-04-08 00:00:00'),
-          end: new Date('2015-04-12 00:00:00'),
+          start: new Date(2015, 3, 8, 0, 0, 0),
+          end: new Date(2015, 3, 12, 0, 0, 0),
         }
       };
 
