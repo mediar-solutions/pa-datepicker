@@ -33,10 +33,8 @@
           var currentDay = 1 - this.start.getDay() + this.container.getStartingDay();
           var current = new Date(this.config.year, this.config.month, currentDay);
 
-          var start = new Date(current.getTime() - current.getTimezoneOffset() * 60000);
-          var end = new Date(this.end.getTime() - this.end.getTimezoneOffset() * 60000);
-
-          var rows = Math.ceil(((end - start) / 86400000) / 7);
+          var rows = (this.end - current) / (1000 * 60 * 60 * 24 * 7);
+          rows = (rows % 1 === 0) ? rows + 1 : Math.ceil(rows);
 
           this.fillRows(rows, current);
         },
