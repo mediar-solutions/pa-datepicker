@@ -43,7 +43,7 @@ var getPreprocessors = function() {
 var getReporters = function() {
   var reporters = ['progress'];
 
-  if (process.env.CIRCLECI) {
+  if (process.env.TRAVIS) {
     reporters.push('coverage');
   }
 

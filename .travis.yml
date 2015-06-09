@@ -2,5 +2,12 @@ language: node_js
 node_js:
   - "0.12.4"
 
+addons:
+  code_climate:
+    repo_token: 07f2aa2c42ea95f7f099397a6aadf66d5d8249824608c159a06cef1ad05ddc77
+
 script:
   - "npm run test-single-run"
+
+after_script:
+  - "codeclimate.js < coverage.info"
