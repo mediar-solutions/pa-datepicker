@@ -3,7 +3,8 @@ node_js:
   - "0.12.4"
 addons:
   code_climate:
-    repo_token: d92f8a06d44c9ed8ae407addfff0b3ec22040ed8cca6686f5b3ffbeda1e2c780
+    repo_token:
+      secure: "cmbtSpEStdP730Fy1eslyXr+tFIp15FcyuD9qtIt59jjgjXw4OvFt+jaka7Jf0IXSTSIkNU5Pp10cGjtwdx54BDBzC8bxb9N0nK6KkAVIhGXqJ5y+/rQjmmUngH99MHGkfwzNUdYXRk4kITzI0ossEkghaWnqEIOiGepWhkHARE="
 script:
   - "npm run test-single-run"
 after_script:
